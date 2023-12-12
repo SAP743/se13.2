@@ -1,0 +1,49 @@
+BSC (Binance Smart Chain) là một blockchain song song (parallel blockchain) chạy song song với blockchain chính của Binance, gọi là Binance Chain. BSC được phát triển để cung cấp một nền tảng phát triển dựa trên blockchain cho các ứng dụng DeFi (Decentralized Finance) và dApps (Decentralized Applications).
+
+Để làm việc với BSC, bạn cần sử dụng một số thư viện và công cụ phát triển phổ biến như sau:
+
+1. Web3j: Web3j là một thư viện Java để tương tác với blockchain Ethereum và các blockchain tương thích Ethereum như BSC. Bạn có thể sử dụng Web3j để kết nối và tương tác với nút BSC (node), gửi giao dịch, đọc thông tin khối, và thực hiện các hoạt động khác trên blockchain.
+
+2. Truffle: Truffle là một framework phát triển dApp và công cụ quản lý hợp đồng thông minh trên blockchain. Truffle cung cấp cách dễ dàng để viết, triển khai và kiểm thử các hợp đồng thông minh trên BSC.
+
+3. Metamask: Metamask là một ví tiền điện tử và một tiện ích mở rộng trình duyệt cho phép người dùng tương tác với các ứng dụng dựa trên Ethereum và BSC. Metamask cung cấp một giao diện để quản lý tài khoản và ký giao dịch trên BSC.
+
+Dưới đây là một ví dụ đơn giản về việc sử dụng Web3j để kết nối và đọc thông tin khối trên BSC bằng Java:
+
+```java
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.DefaultBlockParameterName;
+import org.web3j.protocol.core.methods.request.EthBlockNumber;
+import org.web3j.protocol.core.methods.response.EthBlock;
+import org.web3j.protocol.http.HttpService;
+import java.io.IOException;
+import java.math.BigInteger;
+
+public class BSCExample {
+    public static void main(String[] args) {
+        // Kết nối đến mạng BSC
+        Web3j web3j = Web3j.build(new HttpService("https://bsc-dataseed1.binance.org:443"));
+
+        try {
+            // Lấy số khối hiện tại
+            EthBlockNumber blockNumber = web3j.ethBlockNumber().send();
+            BigInteger latestBlock = blockNumber.getBlockNumber();
+
+            // Lấy thông tin khối mới nhất
+            EthBlock ethBlock = web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, true).send();
+            EthBlock.Block block = ethBlock.getBlock();
+
+            // In thông tin khối mới nhất
+            System.out.println("Latest Block Number: " + latestBlock);
+            System.out.println("Latest Block Hash: " + block.getHash());
+            System.out.println("Latest Block Timestamp: " + block.getTimestamp());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Trong ví dụ trên, chúng ta sử dụng thư viện Web3j để tạo một kết nối tới mạng BSC thông qua URL "https://bsc-dataseed1.binance.org:443". Chúng ta sử dụng `web3j.ethBlockNumber().send()` để lấy số khối hiện tại và `web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, true).send()` để lấy thông tin về khối mới nhất. Kết quả được in ra màn hình, bao gồm số khối mới nhất, hash của khối và thời gian tạo khối.
+
+Lưu ý rằng để chạy ví dụ này, bạn cần có thư viện Web3j và cấu hình môi trường phù hợp trong dự án Java của mình.
