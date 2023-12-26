@@ -1,7 +1,7 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const mnemonic = "realkhiempai"; // Thay thế bằng mnemonic của bạn
-const apiKey = "quangkhiem24"; // Thay thế bằng API key của bạn từ BSCScan
+const mnemonic = "brother celery appear tomato panic ceiling dish yellow monitor bulb slide setup";
+const apiKey = "KHIEM_SOME_STABS_REAL";
 
 module.exports = {
   networks: {
@@ -12,13 +12,13 @@ module.exports = {
     },
     bsc: {
       provider: () => new HDWalletProvider(mnemonic, "https://bsc-dataseed.binance.org/", 0, 10),
-      network_id: 56, // Mainnet
-      gas: 2000000, // Đặt giới hạn gas nếu cần
-      gasPrice: 5000000000, // Đặt giá gas nếu cần
+      network_id: 56,
+      gas: 2000000,
+      gasPrice: 5000000000,
     },
     bscTestnet: {
       provider: () => new HDWalletProvider(mnemonic, "https://data-seed-prebsc-1-s1.binance.org:8545/", 0, 10),
-      network_id: 97, // Testnet
+      network_id: 97,
       gas: 2000000,
       gasPrice: 5000000000,
     },
@@ -29,6 +29,6 @@ module.exports = {
     },
   },
   api_keys: {
-    etherscan: apiKey, // Sử dụng API key từ BSCScan để theo dõi trên Explorer
+    etherscan: apiKey,
   },
 };
