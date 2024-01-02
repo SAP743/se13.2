@@ -1,0 +1,12 @@
+{
+  "dev": {},
+  "bsctest": {
+    "Floppy": "0x7eFa6726ce1A73d8c6bc926E11634249F32CD180",
+    "Vault": "0x78a5Fb7fd74EEEe3fC08A3D9d02db0B0C308BD45",
+    "USDT": "0x3CFE0c88e45eD56C0DE485FCcbbcFD64aB60cd1E",
+    "ico": "0x6239E139b9CB07100E9d6E6edb2b4d790d5fE855",
+    "Hero": "0xCe9874d85c40271f20F6a1832Ad77439D273dF96",
+    "HeroMarketplace": "0xB9b0552183d737062B82B3eb076c94F1e020cA4f"
+  },
+  "main": {}
+}
